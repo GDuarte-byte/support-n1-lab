@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Support N1 Decision Lab — ferramenta local de triagem para incidentes de suporte, redes e segurança.">
+  <meta name="theme-color" content="#07111f">
+  <title>Support N1 Decision Lab</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="grid-noise" aria-hidden="true"></div>
+  <a class="skip-link" href="#triagem">Ir para a triagem</a>
+
+  <header class="topbar">
+    <a class="brand" href="#inicio" aria-label="Início do Support N1 Decision Lab">
+      <span class="brand-mark">N1</span>
+      <span>Support <b>Decision Lab</b></span>
+    </a>
+    <p class="environment"><i></i> laboratório educacional</p>
+  </header>
+
+  <main id="inicio">
+    <section class="hero wrap">
+      <div class="hero-copy">
+        <p class="eyebrow">Suporte técnico · redes · segurança</p>
+        <h1>Triagem clara.<br><span>Próximo passo seguro.</span></h1>
+        <p class="hero-text">Uma ferramenta de estudo que transforma sintomas de um incidente em uma sequência de diagnóstico, registro e escalonamento para atendimento N1.</p>
+        <div class="hero-stats" aria-label="Resumo da ferramenta">
+          <div><strong>03</strong><span>cenários de atendimento</span></div>
+          <div><strong>100%</strong><span>processamento no navegador</span></div>
+          <div><strong>0</strong><span>dados enviados a servidores</span></div>
+        </div>
+      </div>
+
+      <aside class="terminal-card" aria-label="Prévia de uma triagem técnica">
+        <div class="terminal-bar"><span></span><span></span><span></span><em>incident.log</em></div>
+        <pre><code><b>INCIDENTE:</b> Sem acesso à internet
+<b>ESCOPO:</b> Um usuário · Wi-Fi
+<b>PRIORIDADE:</b> P2
+
+<i>01</i> Validar conexão e adaptador
+<i>02</i> Coletar IP, gateway e DNS
+<i>03</i> Testar rota de conectividade
+<i>04</i> Registrar evidências e encaminhar</code></pre>
+      </aside>
+    </section>
+
+    <section class="lab wrap" id="triagem" aria-labelledby="lab-title">
+      <div class="section-heading">
+        <p class="eyebrow">Fluxo interativo</p>
+        <h2 id="lab-title">Monte seu plano de <span>triagem.</span></h2>
+        <p>Escolha um cenário ou descreva o caso. A resposta serve como guia de estudo e checklist — ela não executa comandos nem faz alterações na máquina.</p>
+      </div>
+
+      <div class="lab-layout">
+        <section class="intake-panel" aria-label="Formulário de triagem">
+          <p class="panel-label">Comece por um cenário</p>
+          <div class="scenario-grid" role="group" aria-label="Cenários rápidos">
+            <button class="scenario" type="button" data-scenario="internet">
+              <span class="scenario-icon network" aria-hidden="true">⌁</span>
+              <b>Sem internet</b><small>IP, gateway e DNS</small>
+            </button>
+            <button class="scenario" type="button" data-scenario="slow">
+              <span class="scenario-icon desktop" aria-hidden="true">▣</span>
+              <b>PC lento</b><small>Processos e recursos</small>
+            </button>
+            <button class="scenario" type="button" data-scenario="phishing">
+              <span class="scenario-icon security" aria-hidden="true">!</span>
+              <b>Suspeita de phishing</b><small>Preservar e escalar</small>
+            </button>
+          </div>
+
+          <form id="intake-form">
+            <div class="form-grid">
+              <label>
+                Categoria do incidente
+                <select id="category" name="category">
+                  <option value="network">Conectividade ou DNS</option>
+                  <option value="device">Computador, sistema ou aplicativo</option>
+                  <option value="security">Segurança ou acesso suspeito</option>
+                </select>
+              </label>
+              <label>
+                Impacto observado
+                <select id="impact" name="impact">
+                  <option value="one">Uma pessoa ou dispositivo</option>
+                  <option value="team">Uma equipe ou área</option>
+                  <option value="all">Serviço crítico ou operação ampla</option>
+                </select>
+              </label>
+              <label>
+                Ambiente
+                <select id="environment" name="environment">
+                  <option value="office">Escritório / rede corporativa</option>
+                  <option value="remote">Trabalho remoto / VPN</option>
+                  <option value="home">Ambiente doméstico</option>
+                </select>
+              </label>
+              <label>
+                Urgência percebida
+                <select id="urgency" name="urgency">
+                  <option value="normal">Normal — usuário consegue aguardar</option>
+                  <option value="high">Alta — atividade bloqueada</option>
+                  <option value="critical">Crítica — risco ou parada relevante</option>
+                </select>
+              </label>
+            </div>
+            <label class="symptom-label">
+              Sintoma ou mensagem apresentada <span>(opcional)</span>
+              <textarea id="symptom" name="symptom" rows="3" maxlength="280" placeholder="Ex.: conectado ao Wi-Fi, mas nenhuma página abre desde 09:20."></textarea>
+            </label>
+            <div class="form-actions">
+              <button class="primary-button" type="submit">Gerar plano de triagem <span aria-hidden="true">→</span></button>
+              <p>Não inclua senhas, tokens ou dados sensíveis.</p>
+            </div>
+          </form>
+        </section>
+
+        <section class="result-panel" aria-labelledby="result-title" aria-live="polite">
+          <div class="result-head">
+            <div>
+              <p class="panel-label">Resultado</p>
+              <h3 id="result-title">Aguardando o caso</h3>
+            </div>
+            <span class="priority muted">—</span>
+          </div>
+          <div id="result-content" class="empty-state">
+            <span class="empty-orbit" aria-hidden="true"></span>
+            <p>Selecione um cenário ou preencha o formulário para receber uma sequência segura de investigação.</p>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="guide wrap" aria-labelledby="guide-title">
+      <div class="section-heading compact">
+        <p class="eyebrow">Método</p>
+        <h2 id="guide-title">O que este projeto <span>demonstra.</span></h2>
+      </div>
+      <div class="guide-grid">
+        <article>
+          <span>01</span>
+          <h3>Raciocínio de escopo</h3>
+          <p>Antes de “tentar consertar”, separa um problema individual de uma indisponibilidade mais ampla.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>Diagnóstico sem adivinhação</h3>
+          <p>Organiza testes básicos de Windows, rede e DNS em uma ordem que preserva evidências.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Escalonamento responsável</h3>
+          <p>Indica quando parar, registrar o contexto e encaminhar ao time correto — especialmente em segurança.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="guardrail wrap" aria-label="Limites e segurança da ferramenta">
+      <div class="guardrail-icon" aria-hidden="true">✓</div>
+      <div>
+        <p class="eyebrow">Uso responsável</p>
+        <h2>Guia de estudo, não automação de produção.</h2>
+        <p>O Decision Lab não executa comandos, não coleta informações e não substitui políticas internas, monitoramento ou analistas especializados. Em caso de suspeita de comprometimento, preserve os fatos e siga o processo de resposta a incidentes da organização.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer wrap">
+    <p>Projeto de portfólio de <a href="https://github.com/GDuarte-byte" target="_blank" rel="noopener noreferrer">Gabriel Duarte Tourinho</a>.</p>
+    <p>Feito com HTML, CSS e JavaScript.</p>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
